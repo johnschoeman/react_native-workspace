@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Text, TextInput, Button } from 'react-native'
+import { Text, TextInput, Button, View } from 'react-native'
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 class CreatePost extends Component {
 
@@ -10,25 +12,26 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <Text>
-        <Text className='flex flex-column mt3'>
+      <View style={{width: 300, height: 200}}>
+        <View style={{width: 300, height: 200}}>
+          <Text>Create Post{"\n"}</Text>
           <TextInput
-            className='mb2'
             value={this.state.title}
             onChange={(title) => this.setState({ title })}
-            placeholder='A title for the link'
+            placeholder='A title for the post'
           />
+          <Text>{"\n"}</Text>
           <TextInput
-            className='mb2'
             value={this.state.body}
             onChange={(body) => this.setState({ body })}
-            placeholder='The body for the link'
+            placeholder='The body for the post'
           />
-        </Text>
+        </View>
         <Button
+          title="Submit"
           onPress={() => this._createPost()}
         />
-      </Text>
+      </View>
     )
   }
 
@@ -37,5 +40,18 @@ class CreatePost extends Component {
   }
 
 }
+
+const CREATE_LINK_MUTATION = gql`
+  mutation CreatePostMutation($title: String!, $body: String) {
+    createPost(
+      title: $title,
+      body: $body,
+    ) {
+      id
+      title
+      body
+    }
+  }
+`;
 
 export default CreatePost
