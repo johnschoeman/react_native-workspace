@@ -1,0 +1,28 @@
+# project: cj8i2z8sr032r01555gfiamz4
+# version: 2
+
+type Book implements Node {
+  id: ID! @isUnique
+  author: String
+  description: String
+  image: String
+  rating: Int
+  title: String!
+}
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type User implements Node {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}

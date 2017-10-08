@@ -6,16 +6,31 @@ import { graphql, gql } from 'react-apollo';
 class LinkList extends Component {
 
   render() {
+    debugger;
+    if (this.props.allLinksQuery && this.props.allLinksQuery.loading) {
+      return <Text>Loading</Text>;
+    }
 
-    const linksToRender = [{
-      id: '1',
-      description: 'The Coolest GraphQL Backend 😎',
-      url: 'https://www.graph.cool'
-    }, {
-      id: '2',
-      description: 'The Best GraphQL Client',
-      url: 'http://dev.apollodata.com/'
-    }];
+    if (this.props.allLinksQuery && this.props.allLinksQuery.error) {
+      return <Text>Error</Text>;
+    }
+
+    const linksToRender = this.props.allLinksQuery.allLinks;
+    if (this.props.data.error) {
+      return (
+        <Text>Error</Text>
+      );
+    }
+
+    // const linksToRender = [{
+    //   id: '1',
+    //   description: 'The Coolest GraphQL Backend 😎',
+    //   url: 'https://www.graph.cool'
+    // }, {
+    //   id: '2',
+    //   description: 'The Best GraphQL Client',
+    //   url: 'http://dev.apollodata.com/'
+    // }];
 
     return (
       <View>
@@ -43,5 +58,5 @@ const ALL_LINKS_QUERY = gql`
   }
 `;
 
-// export default graphql(ALL_LINKS_QUERY, {name: 'allLinksQuery' })(LinkList);
-export default LinkList;
+export default graphql(ALL_LINKS_QUERY, {name: 'allLinksQuery' })(LinkList);
+// export default LinkList;
