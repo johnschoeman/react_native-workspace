@@ -13,24 +13,15 @@ interface State {
 }
 
 class Hello extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {enthusiasmLevel: 1};
+  state = {enthusiasmLevel: this.props.enthusiasmLevel || 1};
 
-    this.onIncrement = this.onIncrement.bind(this);
-    this.onDecrement = this.onDecrement.bind(this);
-    this.getExclamationMarks = this.getExclamationMarks.bind(this);
-  }
-
-  onIncrement() {
+  onIncrement = () =>
     this.setState({enthusiasmLevel: this.state.enthusiasmLevel + 1});
-  }
-  onDecrement() {
+  onDecrement = () =>
     this.setState({enthusiasmLevel: this.state.enthusiasmLevel - 1});
-  }
-  getExclamationMarks(numChars: number) {
-    Array(numChars + 1).join('!');
-  }
+  getExclamationMarks = (numChars: number) => {
+    return Array(numChars + 1).join('!');
+  };
 
   render() {
     return (

@@ -19,7 +19,7 @@ exports[`renders correctly with defaults 1`] = `
   >
     Hello
      
-    Worldundefined
+    World!
   </Text>
   <View
     style={

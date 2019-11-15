@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "react": "16.6.1",
-    "react-native": "0.57.5"
+    "react-native": "0.57.5",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@types/jest": "^23.3.9",
@@ -21,18 +23,26 @@
     "react-addons-test-utils": "^15.6.2",
     "react-native-typescript-transformer": "^1.2.10",
     "react-test-renderer": "16.6.1",
+    "redux-devtools-extension": "^2.13.5",
     "ts-jest": "^23.10.4",
     "typescript": "^3.1.6"
   },
   "jest": {
     "preset": "react-native",
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
       "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec)).(ts|tsx|js)$",
-    "testPathIgnorePatterns": ["\\.snap$", "<rootDir>/node_modules/"],
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ],
     "cacheDirectory": ".jest/cache"
   }
 }
